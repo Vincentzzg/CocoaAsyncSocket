@@ -3228,6 +3228,7 @@ enum GCDAsyncSocketConfig
 			if (readStream)
 			{
 				CFReadStreamSetClient(readStream, kCFStreamEventNone, NULL, NULL);
+                CFReadStreamSetProperty(readStream, kCFStreamPropertyShouldCloseNativeSocket, kCFBooleanFalse);
 				CFReadStreamClose(readStream);
 				CFRelease(readStream);
 				readStream = NULL;
@@ -3235,6 +3236,7 @@ enum GCDAsyncSocketConfig
 			if (writeStream)
 			{
 				CFWriteStreamSetClient(writeStream, kCFStreamEventNone, NULL, NULL);
+                CFWriteStreamSetProperty(writeStream, kCFStreamPropertyShouldCloseNativeSocket, kCFBooleanFalse);
 				CFWriteStreamClose(writeStream);
 				CFRelease(writeStream);
 				writeStream = NULL;
